@@ -68,6 +68,7 @@ a {
   gap: 10px 22px;
   color: var(--muted);
   font-size: 0.95rem;
+  text-transform: uppercase;
 }
 
 .nav-links a {
@@ -278,9 +279,17 @@ h3 {
 }
 
 .profile-card {
-  background: linear-gradient(145deg, rgba(185, 203, 239, 0.9), rgba(92, 15, 5, 0.18));
+  background: var(--text);
+  color: var(--card);
   padding: 34px;
-  transform: rotate(2deg);
+  transform: rotate(4deg);
+}
+
+.profile-card p,
+.profile-card ul,
+.profile-card li,
+.profile-card a {
+  color: var(--card);
 }
 
 .skill-card,
@@ -313,9 +322,8 @@ h3 {
 }
 
 .profile-card ul {
-  padding: 20px 0 0;
-  margin: 20px 0 0;
-  border-top: 1px solid var(--line);
+  padding: 0;
+  margin: 0;
   color: var(--muted);
   list-style: none;
 }
