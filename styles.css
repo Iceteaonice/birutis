@@ -207,33 +207,28 @@ h3 {
 }
 
 @keyframes fontCycle {
-  0%, 60%, 100% {
-    font-family: "ITC Century Handtooled", Georgia, serif;
+  0%, 50%, 100% {
+    font-family: "Hanken Grotesk", sans-serif;
     font-style: normal;
   }
 
   10% {
-    font-family: "ITC MAGINIFICO", Georgia, serif;
+    font-family: "Gravitas One", Georgia, serif;
     font-style: normal;
   }
 
   20% {
-    font-family: "Laries Script", cursive;
+    font-family: "Lexend", sans-serif;
     font-style: normal;
   }
 
   30% {
-    font-family: "Molenilo", Georgia, serif;
+    font-family: "Niconne", cursive;
     font-style: normal;
   }
 
   40% {
-    font-family: "Nove", Georgia, serif;
-    font-style: normal;
-  }
-
-  50% {
-    font-family: "Oilvare", Georgia, serif;
+    font-family: "Special Elite", monospace;
     font-style: normal;
   }
 }
