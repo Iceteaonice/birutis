@@ -178,6 +178,9 @@ h3 {
 
 .scroll-word span {
   animation: fontCycle 2s steps(1, end) infinite;
+  display: inline-block;
+  text-align: center;
+  width: 0.85em;
 }
 
 .scroll-word span:nth-child(2) {
