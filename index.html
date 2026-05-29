@@ -22,6 +22,7 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -29,7 +30,7 @@
   </header>
 
   <main id="top">
-    <section class="scroll-landing" aria-label="Scroll down">
+    <section class="scroll-landing page-section is-active" aria-label="Scroll down">
       <a class="scroll-cue" href="#profile" aria-label="Scroll to portfolio content">
         <span class="scroll-word" aria-hidden="true">
           <span>s</span><span>c</span><span>r</span><span>o</span><span>l</span><span>l</span>
@@ -38,7 +39,7 @@
       </a>
     </section>
 
-    <section id="profile" class="hero section">
+    <section id="profile" class="hero section page-section">
       <div class="hero-copy">
         <h1>Aistė Gedvilaitė</h1>
         <p class="role">Guest Relations and Events Coordinator</p>
@@ -61,7 +62,7 @@
       </aside>
     </section>
 
-    <section id="about" class="section split-section">
+    <section id="about" class="section split-section page-section">
       <div>
         <p class="eyebrow">About Me</p>
         <h2>Focused on thoughtful hospitality, smooth events, and excellent guest care.</h2>
@@ -73,7 +74,7 @@
       </p>
     </section>
 
-    <section id="experience" class="section">
+    <section id="experience" class="section page-section">
       <div class="section-heading">
         <p class="eyebrow">CV</p>
         <h2>Experience & Education</h2>
@@ -167,7 +168,7 @@
       </div>
     </section>
 
-    <section id="skills" class="section skills-section">
+    <section id="skills" class="section skills-section page-section">
       <div class="section-heading">
         <p class="eyebrow">Strengths</p>
         <h2>Skills</h2>
@@ -189,7 +190,7 @@
       </div>
     </section>
 
-    <section class="section projects-section">
+    <section id="projects" class="section projects-section page-section">
       <div class="section-heading">
         <h2>Selected Projects</h2>
       </div>
@@ -213,7 +214,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section page-section">
       <p class="eyebrow">Contact</p>
       <h2>Let’s work together.</h2>
       <p>Email me at <a href="mailto:aiste.gedvilaite96@gmail.com">aiste.gedvilaite96@gmail.com</a></p>
@@ -224,6 +225,9 @@
     const navLinks = document.querySelector('.nav-links');
     const menuBackdrop = document.querySelector('.menu-backdrop');
     const scrollCue = document.querySelector('.scroll-cue');
+    const pageLinks = document.querySelectorAll('a[href^="#"]');
+    const pageSections = document.querySelectorAll('.page-section');
+    let activePage = document.querySelector('.page-section.is-active');
 
     function closeMenu() {
       navLinks.classList.remove('is-open');
@@ -244,43 +248,55 @@
 
     menuBackdrop.addEventListener('click', closeMenu);
 
-    function scrollToSection(target) {
-      const headerOffset = document.querySelector('.site-header').offsetHeight;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    function showPage(target, updateHash = true) {
+      if (!target || target === activePage || !target.classList.contains('page-section')) {
+        return;
+      }
 
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
+      const currentPage = activePage;
+
+      if (currentPage) {
+        currentPage.classList.add('is-fading');
+      }
+
+      window.setTimeout(() => {
+        if (currentPage) {
+          currentPage.classList.remove('is-active', 'is-fading');
+        }
+
+        target.classList.add('is-active');
+        activePage = target;
+        window.scrollTo({ top: 0, behavior: 'auto' });
+
+        if (updateHash) {
+          history.pushState(null, '', `#${target.id || 'top'}`);
+        }
+      }, 120);
     }
 
-    scrollCue.addEventListener('click', (event) => {
-      const target = document.querySelector(scrollCue.getAttribute('href'));
+    pageLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
 
-      if (!target) {
-        return;
-      }
+        if (!target || !target.classList.contains('page-section')) {
+          return;
+        }
 
-      event.preventDefault();
-      scrollToSection(target);
+        event.preventDefault();
+        closeMenu();
+        showPage(target);
+      });
     });
 
-    navLinks.addEventListener('click', (event) => {
-      if (event.target.tagName !== 'A') {
-        return;
-      }
-
-      const target = document.querySelector(event.target.getAttribute('href'));
-
-      closeMenu();
-
-      if (!target) {
-        return;
-      }
-
-      event.preventDefault();
-      scrollToSection(target);
+    window.addEventListener('popstate', () => {
+      const target = document.querySelector(window.location.hash || '.scroll-landing');
+      showPage(target, false);
     });
+
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      showPage(target, false);
+    }
   </script>
 </body>
 </html>
