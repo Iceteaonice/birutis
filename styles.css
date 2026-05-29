@@ -164,15 +164,39 @@ h3 {
   align-items: center;
   gap: 8px;
   color: var(--text);
-  font-size: clamp(2.8rem, 10vw, 8rem);
+  font-size: clamp(2.52rem, 9vw, 7.2rem);
   font-weight: 800;
   letter-spacing: 0.18em;
   text-decoration: none;
   text-transform: uppercase;
 }
 
-.scroll-cue span:first-child {
-  animation: fontCycle 1s steps(1, end) infinite;
+.scroll-word {
+  display: inline-flex;
+}
+
+.scroll-word span {
+  animation: fontCycle 2s steps(1, end) infinite;
+}
+
+.scroll-word span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.scroll-word span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.scroll-word span:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+.scroll-word span:nth-child(5) {
+  animation-delay: 0.48s;
+}
+
+.scroll-word span:nth-child(6) {
+  animation-delay: 0.6s;
 }
 
 .scroll-arrow {
@@ -182,27 +206,27 @@ h3 {
 }
 
 @keyframes fontCycle {
-  0%, 100% {
-    font-family: "ITC Benguiat", "Benguiat", Georgia, serif;
+  0%, 50%, 100% {
+    font-family: "Abril Fatface", Georgia, serif;
     font-style: normal;
     letter-spacing: 0.18em;
   }
 
-  25% {
-    font-family: Arial, Helvetica, sans-serif;
+  12.5% {
+    font-family: "Amoresa", Georgia, serif;
     font-style: normal;
     letter-spacing: 0.28em;
   }
 
-  50% {
-    font-family: "Courier New", Courier, monospace;
+  25% {
+    font-family: "Balloon Drop Shadow", "Arial Black", Arial, sans-serif;
     font-style: normal;
     letter-spacing: 0.08em;
   }
 
-  75% {
-    font-family: Georgia, "Times New Roman", serif;
-    font-style: italic;
+  37.5% {
+    font-family: "Have Heart One", cursive;
+    font-style: normal;
     letter-spacing: 0.2em;
   }
 }
