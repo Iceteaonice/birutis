@@ -1,10 +1,10 @@
 :root {
   --bg: #B9CBEF;
   --text: #0D3423;
-  --muted: #766b63;
+  --muted: #5c0f05;
   --card: #fff6c9;
-  --accent: #b6603b;
-  --accent-dark: #7b3d25;
+  --accent: #5c0f05;
+  --accent-dark: #5c0f05;
   --line: rgba(33, 28, 24, 0.12);
   --shadow: 0 24px 70px rgba(79, 52, 36, 0.14);
 }
@@ -275,8 +275,20 @@ h3 {
 }
 
 .profile-card {
+  background: linear-gradient(145deg, rgba(185, 203, 239, 0.9), rgba(92, 15, 5, 0.18));
   padding: 34px;
   transform: rotate(2deg);
+}
+
+.skill-card,
+.project-card {
+  background: rgba(238, 231, 221, 0.88);
+  color: var(--text);
+}
+
+.skill-card p,
+.project-card p {
+  color: var(--muted);
 }
 
 .avatar {
@@ -392,6 +404,10 @@ h3 {
 .contact-section a {
   color: #ffd2bd;
   font-weight: 800;
+}
+
+.contact-section .eyebrow {
+  color: var(--card);
 }
 
 @media (max-width: 820px) {
