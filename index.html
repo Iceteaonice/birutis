@@ -223,6 +223,7 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const menuBackdrop = document.querySelector('.menu-backdrop');
+    const scrollCue = document.querySelector('.scroll-cue');
 
     function closeMenu() {
       navLinks.classList.remove('is-open');
@@ -243,6 +244,27 @@
 
     menuBackdrop.addEventListener('click', closeMenu);
 
+    function scrollToSection(target) {
+      const headerOffset = document.querySelector('.site-header').offsetHeight;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+      });
+    }
+
+    scrollCue.addEventListener('click', (event) => {
+      const target = document.querySelector(scrollCue.getAttribute('href'));
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      scrollToSection(target);
+    });
+
     navLinks.addEventListener('click', (event) => {
       if (event.target.tagName !== 'A') {
         return;
@@ -257,13 +279,7 @@
       }
 
       event.preventDefault();
-      const headerOffset = document.querySelector('.site-header').offsetHeight;
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
+      scrollToSection(target);
     });
   </script>
 </body>
