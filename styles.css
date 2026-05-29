@@ -175,6 +175,7 @@ h3 {
 .scroll-word {
   display: inline-flex;
   gap: 3mm;
+  justify-content: center;
 }
 
 .scroll-word span {
@@ -205,8 +206,11 @@ h3 {
 }
 
 .scroll-arrow {
+  display: block;
   font-size: clamp(2.4rem, 7vw, 5rem);
   line-height: 1;
+  text-align: center;
+  width: 100%;
   animation: arrowBounce 1.2s ease-in-out infinite;
 }
 
