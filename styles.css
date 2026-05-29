@@ -63,34 +63,15 @@ a {
 }
 
 .nav-links {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 25;
   display: flex;
-  width: min(78vw, 360px);
-  height: 100vh;
-  flex-direction: column;
-  gap: 0;
-  padding: 112px 44px 44px;
-  border: 1px solid var(--line);
-  border-radius: 32px 0 0 32px;
-  background: rgba(238, 231, 221, 0.96);
-  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+  gap: 10px 22px;
   color: var(--muted);
   font-size: 0.95rem;
   text-transform: uppercase;
-  transform: translateX(105%);
-  transition: transform 220ms ease;
-}
-
-.nav-links.is-open {
-  transform: translateX(0);
 }
 
 .nav-links a {
-  padding: 16px 0;
-  font-size: 1.25rem;
   text-decoration: none;
 }
 
@@ -99,9 +80,7 @@ a {
 }
 
 .menu-toggle {
-  position: relative;
-  z-index: 30;
-  display: grid;
+  display: none;
   width: 52px;
   height: 44px;
   align-content: center;
@@ -137,20 +116,7 @@ a {
 }
 
 .menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 20;
-  display: block;
-  border: 0;
-  background: rgba(13, 52, 35, 0.22);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-.menu-backdrop.is-open {
-  opacity: 1;
-  pointer-events: auto;
+  display: none;
 }
 
 .section {
@@ -500,6 +466,57 @@ h3 {
   .nav {
     align-items: center;
     padding: 16px 0;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 30;
+    display: grid;
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: block;
+    border: 0;
+    background: rgba(13, 52, 35, 0.22);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  .menu-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 25;
+    width: min(78vw, 360px);
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 112px 44px 44px;
+    border: 1px solid var(--line);
+    border-radius: 32px 0 0 32px;
+    background: rgba(238, 231, 221, 0.96);
+    box-shadow: var(--shadow);
+    transform: translateX(105%);
+    transition: transform 220ms ease;
+  }
+
+  .nav-links.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    padding: 16px 0;
+    font-size: 1.25rem;
   }
 
   .hero,
