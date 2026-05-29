@@ -447,6 +447,7 @@ h3 {
 @media (max-width: 820px) {
   .nav {
     align-items: center;
+    flex-wrap: wrap;
     padding: 16px 0;
   }
 
@@ -456,9 +457,11 @@ h3 {
 
   .nav-links {
     display: none;
+    flex-basis: 100%;
     width: 100%;
     flex-direction: column;
     gap: 0;
+    margin-top: 12px;
     padding: 18px;
     border: 1px solid var(--line);
     border-radius: 24px;
