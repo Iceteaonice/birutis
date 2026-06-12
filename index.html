@@ -245,6 +245,14 @@
     menuBackdrop.addEventListener('click', closeMenu);
 
     function scrollToSection(target) {
+      if (target.id === 'contact' && window.matchMedia('(max-width: 820px)').matches) {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+        return;
+      }
+
       const headerOffset = document.querySelector('.site-header').offsetHeight;
       const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
 
