@@ -14,11 +14,13 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(182, 96, 59, 0.12), transparent 34rem),
     var(--bg);
@@ -506,12 +508,16 @@ h3 {
     border-radius: 32px 0 0 32px;
     background: rgba(238, 231, 221, 0.96);
     box-shadow: var(--shadow);
+    pointer-events: none;
     transform: translateX(105%);
     transition: transform 220ms ease;
+    visibility: hidden;
   }
 
   .nav-links.is-open {
+    pointer-events: auto;
     transform: translateX(0);
+    visibility: visible;
   }
 
   .nav-links a {
